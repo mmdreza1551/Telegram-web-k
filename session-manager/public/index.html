@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telegram Session Manager</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Vazirmatn:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-gradient"></div>
+    <div class="app-shell">
+      <div class="hero">
+        <div class="logo">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M4 32C4 15.432 17.432 2 34 2c16.569 0 30 13.432 30 30 0 16.569-13.431 30-30 30C17.432 62 4 48.569 4 32z" fill="#1c8adb" opacity="0.12"></path>
+            <path d="M52.4 14.5 12.6 29.8c-3.2 1.2-3.2 5.8.1 7l8.9 3.2 4.2 9.8c.8 1.8 3.3 2 4.3.3l5.4-9 9.7-19.7c1.4-2.7-1.2-5.7-4.8-4.9z" fill="#2da2ef"></path>
+          </svg>
+        </div>
+        <div>
+          <h1>مدیریت سشن تلگرام</h1>
+          <p>رابط ساخت سشن با تجربه کاربری مشابه لاگین تلگرام</p>
+        </div>
+      </div>
+
+      <main class="card">
+        <header class="card__header">
+          <div>
+            <p class="eyebrow">Telegram Mini App</p>
+            <h2>ورود برای ساخت سشن</h2>
+          </div>
+          <div class="pill" id="pill-status">وضعیت آماده</div>
+        </header>
+
+        <div class="progress">
+          <div class="progress__step is-active" data-step="phone">شماره</div>
+          <div class="progress__step" data-step="code">کد</div>
+          <div class="progress__step" data-step="password">دو مرحله‌ای</div>
+          <div class="progress__bar"><span></span></div>
+        </div>
+
+        <section class="view is-active" data-view="phone">
+          <form id="phone-form" class="stack">
+            <label class="field">
+              <span>شماره تلفن</span>
+              <div class="field__control">
+                <span class="code-tag">+98</span>
+                <input id="phone-input" type="tel" placeholder="9121234567" autocomplete="tel" required />
+              </div>
+              <small>شماره را بدون صفر ابتدایی وارد کنید. نمونه: 9121234567</small>
+            </label>
+            <button class="btn" type="submit">ارسال کد</button>
+          </form>
+        </section>
+
+        <section class="view" data-view="code">
+          <p class="hint" id="code-target">کد به شماره ارسال شد.</p>
+          <form id="code-form" class="stack">
+            <div class="otp" id="otp-inputs">
+              <input type="text" inputmode="numeric" maxlength="1" aria-label="عدد اول" />
+              <input type="text" inputmode="numeric" maxlength="1" aria-label="عدد دوم" />
+              <input type="text" inputmode="numeric" maxlength="1" aria-label="عدد سوم" />
+              <input type="text" inputmode="numeric" maxlength="1" aria-label="عدد چهارم" />
+              <input type="text" inputmode="numeric" maxlength="1" aria-label="عدد پنجم" />
+              <input type="text" inputmode="numeric" maxlength="1" aria-label="عدد ششم" />
+            </div>
+            <div class="actions">
+              <button class="btn ghost" type="button" id="resend">ارسال مجدد</button>
+              <button class="btn" type="submit">تایید کد</button>
+            </div>
+            <small id="timer">کد تا ۱۰ دقیقه معتبر است</small>
+          </form>
+        </section>
+
+        <section class="view" data-view="password">
+          <form id="password-form" class="stack">
+            <label class="field">
+              <span>رمز عبور دو مرحله‌ای</span>
+              <input id="password-input" type="password" autocomplete="current-password" placeholder="•••••••" required />
+              <small id="password-hint">راهنما: ترکیبی از حروف و اعداد</small>
+            </label>
+            <button class="btn" type="submit">تایید و ساخت سشن</button>
+          </form>
+        </section>
+
+        <section class="view" data-view="success">
+          <div class="success">
+            <div class="pulse"></div>
+            <h3>سشن ساخته شد</h3>
+            <p id="session-token"></p>
+            <small>توکن را در ربات خود استفاده کنید.</small>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
